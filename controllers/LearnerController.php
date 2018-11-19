@@ -117,8 +117,8 @@ class LearnerController extends PersonController
      */
     public function actionDelete($id)
     {
-        parent::actionDelete($id);
         $this->findModel($id)->delete();
+        PersonController::actionDeleteWithoutRedirect($id);
 
         return $this->redirect(['index']);
     }

@@ -110,6 +110,18 @@ class PersonController extends Controller
     }
 
     /**
+     * Deletes an existing Person model.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDeleteWithoutRedirect($id)
+    {
+        Person::findOne($id)->delete();
+    }
+
+
+    /**
      * Finds the Person model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
