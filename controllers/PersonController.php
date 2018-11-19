@@ -117,7 +117,13 @@ class PersonController extends Controller
      */
     public function actionDeleteWithoutRedirect($id)
     {
-        Person::findOne($id)->delete();
+        // Had to explicitly call Person as yii was overriding it with child class
+        if (($model = Person::findOne($id)) !== null) {
+            $model->delete();
+            return;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
 
