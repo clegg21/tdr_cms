@@ -52,8 +52,11 @@ class LearnerController extends PersonController
      */
     public function actionView($id)
     {
+        $person =  Person::find()->where(['person_id' => $id])->one();
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'learner' => $this->findModel($id),
+            'person' => $person
         ]);
     }
 
@@ -66,8 +69,6 @@ class LearnerController extends PersonController
     {
         $person = new Person();
         $learner = new Learner();
-
-//        $person->scenario = 'actionCreate';
 
         if ($person->load(Yii::$app->request->post()) && $person->save()) {
             $learner->learner_id = $person->person_id;
@@ -94,14 +95,16 @@ class LearnerController extends PersonController
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $person =  Person::find()->where(['person_id' => $id])->one();
+        $learner = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->learner_id]);
+        if ($person->load(Yii::$app->request->post()) && $person->save() && $learner->load(Yii::$app->request->post()) && $learner->save()) {
+            return $this->redirect(['view', 'id' => $learner->learner_id]);
         }
 
         return $this->render('update', [
-            'model' => $model,
+            'person' => $person,
+            'learner' => $learner,
         ]);
     }
 
@@ -114,6 +117,7 @@ class LearnerController extends PersonController
      */
     public function actionDelete($id)
     {
+        parent::actionDelete($id);
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

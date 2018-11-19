@@ -19,7 +19,7 @@ use Yii;
  * @property Company $status
  * @property Course $course
  * @property Locker $locker
- * @property Person $learner0
+ * @property Person $person
  * @property Qualification $qualification
  * @property Status $status0
  * @property Relationship[] $relationships
@@ -98,7 +98,7 @@ class Learner extends \app\models\Person
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getLearner0()
+    public function getPerson()
     {
         return $this->hasOne(Person::className(), ['person_id' => 'learner_id']);
     }
