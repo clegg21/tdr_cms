@@ -28,8 +28,11 @@ class Locker extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['locker_number'], 'required'],
+            [['locker_id', 'locker_number'], 'required'],
+            [['locker_id'], 'default', 'value' => null],
+            [['locker_id'], 'integer'],
             [['locker_number'], 'string', 'max' => 3],
+            [['locker_id'], 'unique'],
         ];
     }
 

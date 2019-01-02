@@ -32,10 +32,11 @@ class Course extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['description', 'subject_id'], 'required'],
-            [['subject_id'], 'default', 'value' => null],
-            [['subject_id'], 'integer'],
-            [['description'], 'string', 'max' => 99],
+            [['course_id', 'description', 'subject_id'], 'required'],
+            [['course_id', 'subject_id'], 'default', 'value' => null],
+            [['course_id', 'subject_id'], 'integer'],
+            [['description'], 'string', 'max' => 250],
+            [['course_id'], 'unique'],
             [['subject_id'], 'exist', 'skipOnError' => true, 'targetClass' => Subject::className(), 'targetAttribute' => ['subject_id' => 'subject_id']],
         ];
     }

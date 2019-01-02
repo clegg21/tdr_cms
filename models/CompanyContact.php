@@ -11,9 +11,9 @@ use Yii;
  * @property int $company_id
  *
  * @property Company $company
- * @property Person $companyContact
+ * @property Person $companyContact0
  */
-class CompanyContact extends \yii\db\ActiveRecord
+class CompanyContact extends \app\models\Person
 {
     /**
      * {@inheritdoc}
@@ -60,7 +60,7 @@ class CompanyContact extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCompanyContact()
+    public function getCompanyContact0()
     {
         return $this->hasOne(Person::className(), ['person_id' => 'company_contact_id']);
     }

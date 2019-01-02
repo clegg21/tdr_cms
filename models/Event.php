@@ -9,13 +9,8 @@ use Yii;
  *
  * @property int $event_id
  * @property string $description
- * @property string $start_date
- * @property string $end_date
- * @property int $location_id
  *
- * @property Location $location
- * @property EventOnModule[] $eventOnModules
- * @property EventPerson[] $eventPeople
+ * @property EventTimetableSlotPerson[] $eventTimetableSlotPeople
  */
 class Event extends \yii\db\ActiveRecord
 {
@@ -33,12 +28,11 @@ class Event extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['description', 'start_date', 'end_date', 'location_id'], 'required'],
-            [['start_date', 'end_date'], 'safe'],
-            [['location_id'], 'default', 'value' => null],
-            [['location_id'], 'integer'],
-            [['description'], 'string', 'max' => 99],
-            [['location_id'], 'exist', 'skipOnError' => true, 'targetClass' => Location::className(), 'targetAttribute' => ['location_id' => 'location_id']],
+            [['event_id', 'description'], 'required'],
+            [['event_id'], 'default', 'value' => null],
+            [['event_id'], 'integer'],
+            [['description'], 'string', 'max' => 250],
+            [['event_id'], 'unique'],
         ];
     }
 
@@ -50,33 +44,14 @@ class Event extends \yii\db\ActiveRecord
         return [
             'event_id' => 'Event ID',
             'description' => 'Description',
-            'start_date' => 'Start Date',
-            'end_date' => 'End Date',
-            'location_id' => 'Location ID',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getLocation()
+    public function getEventTimetableSlotPeople()
     {
-        return $this->hasOne(Location::className(), ['location_id' => 'location_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getEventOnModules()
-    {
-        return $this->hasMany(EventOnModule::className(), ['event_id' => 'event_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getEventPeople()
-    {
-        return $this->hasMany(EventPerson::className(), ['event_id' => 'event_id']);
+        return $this->hasMany(EventTimetableSlotPerson::className(), ['event_id' => 'event_id']);
     }
 }

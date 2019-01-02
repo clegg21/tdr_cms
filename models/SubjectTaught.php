@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "subject_taught".
  *
- * @property int $instructor_subject
+ * @property int $subject_taught_id
  * @property int $instructor_id
  * @property int $subject_id
  *
@@ -30,9 +30,10 @@ class SubjectTaught extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['instructor_id', 'subject_id'], 'required'],
-            [['instructor_id', 'subject_id'], 'default', 'value' => null],
-            [['instructor_id', 'subject_id'], 'integer'],
+            [['subject_taught_id', 'instructor_id', 'subject_id'], 'required'],
+            [['subject_taught_id', 'instructor_id', 'subject_id'], 'default', 'value' => null],
+            [['subject_taught_id', 'instructor_id', 'subject_id'], 'integer'],
+            [['subject_taught_id'], 'unique'],
             [['instructor_id'], 'exist', 'skipOnError' => true, 'targetClass' => Instructor::className(), 'targetAttribute' => ['instructor_id' => 'instructor_id']],
             [['subject_id'], 'exist', 'skipOnError' => true, 'targetClass' => Subject::className(), 'targetAttribute' => ['subject_id' => 'subject_id']],
         ];
@@ -44,7 +45,7 @@ class SubjectTaught extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'instructor_subject' => 'Instructor Subject',
+            'subject_taught_id' => 'Subject Taught ID',
             'instructor_id' => 'Instructor ID',
             'subject_id' => 'Subject ID',
         ];

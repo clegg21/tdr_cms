@@ -10,8 +10,8 @@ use Yii;
  * @property int $module_id
  * @property string $description
  *
- * @property EventOnModule[] $eventOnModules
  * @property ModuleOnCourse[] $moduleOnCourses
+ * @property TimetableSlotOnModule[] $timetableSlotOnModules
  */
 class Module extends \yii\db\ActiveRecord
 {
@@ -29,8 +29,11 @@ class Module extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['description'], 'required'],
-            [['description'], 'string', 'max' => 99],
+            [['module_id', 'description'], 'required'],
+            [['module_id'], 'default', 'value' => null],
+            [['module_id'], 'integer'],
+            [['description'], 'string', 'max' => 250],
+            [['module_id'], 'unique'],
         ];
     }
 
@@ -48,16 +51,16 @@ class Module extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEventOnModules()
+    public function getModuleOnCourses()
     {
-        return $this->hasMany(EventOnModule::className(), ['module_id' => 'module_id']);
+        return $this->hasMany(ModuleOnCourse::className(), ['module_id' => 'module_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getModuleOnCourses()
+    public function getTimetableSlotOnModules()
     {
-        return $this->hasMany(ModuleOnCourse::className(), ['module_id' => 'module_id']);
+        return $this->hasMany(TimetableSlotOnModule::className(), ['module_id' => 'module_id']);
     }
 }

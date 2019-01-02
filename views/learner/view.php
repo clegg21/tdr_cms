@@ -26,13 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+
     <?= DetailView::widget([
         'model' => [ $person, $learner ],
         'attributes' => [
-            [
-                'label' => 'Person ID',
-                'value' => $person->person_id,
-            ],
             [
                 'label' => 'First Name',
                 'value' => $person->first_name,
@@ -52,28 +49,37 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'label' => 'Person Type ID',
                 'value' => $person->person_type_id,
-            ],            [
-                'label' => 'Learner ID',
-                'value' => $learner->learner_id,
-            ],            [
+            ],
+            [
                 'label' => 'Course ID',
-                'value' => $learner->course_id,
-            ],            [
+                'value' => \app\models\Course::findOne($learner->course_id),
+//                    ->select('description')
+//                    ->from('course')
+//                    ->where(['course_id'=>]),
+//                'value' => \app\models\Course::find()->select(description)->from(course)->where((course_id=>$learner->course_id))->one()
+//                'value' => $learner->course_id,
+            ],
+            [
                 'label' => 'Start Date',
                 'value' => $learner->start_date,
-            ],            [
+            ],
+            [
                 'label' => 'End Date',
                 'value' => $learner->end_date,
-            ],            [
+            ],
+            [
                 'label' => 'Qualification ID',
                 'value' => $learner->qualification_id,
-            ],            [
+            ],
+            [
                 'label' => 'Status ID',
                 'value' => $learner->status_id,
-            ],            [
+            ],
+            [
                 'label' => 'Company ID',
                 'value' => $learner->company_id,
-            ],            [
+            ],
+            [
                 'label' => 'Locker ID',
                 'value' => $learner->locker_id,
             ],

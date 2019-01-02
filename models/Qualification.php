@@ -28,8 +28,11 @@ class Qualification extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['qualification_name'], 'required'],
-            [['qualification_name'], 'string', 'max' => 50],
+            [['qualification_id', 'qualification_name'], 'required'],
+            [['qualification_id'], 'default', 'value' => null],
+            [['qualification_id'], 'integer'],
+            [['qualification_name'], 'string', 'max' => 250],
+            [['qualification_id'], 'unique'],
         ];
     }
 

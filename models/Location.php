@@ -8,9 +8,9 @@ use Yii;
  * This is the model class for table "location".
  *
  * @property int $location_id
- * @property int $description
+ * @property string $description
  *
- * @property Event[] $events
+ * @property TimetableSlot[] $timetableSlots
  */
 class Location extends \yii\db\ActiveRecord
 {
@@ -28,9 +28,11 @@ class Location extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['description'], 'required'],
-            [['description'], 'default', 'value' => null],
-            [['description'], 'integer'],
+            [['location_id', 'description'], 'required'],
+            [['location_id'], 'default', 'value' => null],
+            [['location_id'], 'integer'],
+            [['description'], 'string', 'max' => 250],
+            [['location_id'], 'unique'],
         ];
     }
 
@@ -48,8 +50,8 @@ class Location extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEvents()
+    public function getTimetableSlots()
     {
-        return $this->hasMany(Event::className(), ['location_id' => 'location_id']);
+        return $this->hasMany(TimetableSlot::className(), ['location_id' => 'location_id']);
     }
 }
