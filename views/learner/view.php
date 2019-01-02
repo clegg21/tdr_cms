@@ -52,12 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'label' => 'Course ID',
-                'value' => \app\models\Course::findOne($learner->course_id),
-//                    ->select('description')
-//                    ->from('course')
-//                    ->where(['course_id'=>]),
-//                'value' => \app\models\Course::find()->select(description)->from(course)->where((course_id=>$learner->course_id))->one()
-//                'value' => $learner->course_id,
+                'value' => $learner->course_id,
             ],
             [
                 'label' => 'Start Date',
