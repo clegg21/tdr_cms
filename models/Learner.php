@@ -16,10 +16,10 @@ use Yii;
  * @property int $company_id
  * @property int $locker_id
  *
- * @property Company $status
+ * @property Company $company
  * @property Course $course
  * @property Locker $locker
- * @property Person $learner0
+ * @property Person $learner
  * @property Qualification $qualification
  * @property Status $status0
  * @property Relationship[] $relationships
@@ -61,22 +61,22 @@ class Learner extends \app\models\Person
     {
         return [
             'learner_id' => 'Learner ID',
-            'course_id' => 'Course ID',
+            'course_id' => 'Course',
             'start_date' => 'Start Date',
             'end_date' => 'End Date',
-            'qualification_id' => 'Qualification ID',
-            'status_id' => 'Status ID',
-            'company_id' => 'Company ID',
-            'locker_id' => 'Locker ID',
+            'qualification_id' => 'Qualification',
+            'status_id' => 'Status',
+            'company_id' => 'Company',
+            'locker_id' => 'Locker Number',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getStatus()
+    public function getCompany()
     {
-        return $this->hasOne(Company::className(), ['company_id' => 'status_id']);
+        return $this->hasOne(Company::className(), ['company_id' => 'company_id']);
     }
 
     /**
@@ -98,7 +98,7 @@ class Learner extends \app\models\Person
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getLearner0()
+    public function getLearner()
     {
         return $this->hasOne(Person::className(), ['person_id' => 'learner_id']);
     }
@@ -114,7 +114,7 @@ class Learner extends \app\models\Person
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getStatus0()
+    public function getStatus()
     {
         return $this->hasOne(Status::className(), ['status_id' => 'status_id']);
     }

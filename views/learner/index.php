@@ -38,12 +38,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $person->last_name;},
             ],
             [
-                'label' => 'Address ID',
-                'attribute' => 'address_id',
-                'value' => function($learner) {$person = \app\models\Person::find()->where(['person_id'=>$learner->learner_id])->one();
-                    return $person->address_id;},
-            ],
-            [
                 'label' => 'Email Address',
                 'attribute' => 'email_address',
                 'value' => function($learner) {$person = \app\models\Person::find()->where(['person_id'=>$learner->learner_id])->one();
