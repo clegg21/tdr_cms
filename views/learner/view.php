@@ -47,12 +47,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $person->phone_number,
             ],
             [
-                'label' => 'Person Type ID',
-                'value' => $person->person_type_id,
+                'label' => 'Person Type',
+                'value' => \app\models\PersonType::findOne($person->person_type_id)->person_type,
             ],
             [
-                'label' => 'Course ID',
-                'value' => $learner->course_id,
+                'label' => 'Course',
+                'value' => \app\models\Course::findOne($learner->course_id)->description,
             ],
             [
                 'label' => 'Start Date',
@@ -63,20 +63,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $learner->end_date,
             ],
             [
-                'label' => 'Qualification ID',
-                'value' => $learner->qualification_id,
+                'label' => 'Qualification',
+                'value' => \app\models\Qualification::findOne($learner->qualification_id)->qualification_name,
             ],
             [
-                'label' => 'Status ID',
-                'value' => $learner->status_id,
+                'label' => 'Status',
+                'value' => \app\models\Status::findOne($learner->status_id)->status_description,
             ],
             [
-                'label' => 'Company ID',
-                'value' => $learner->company_id,
+                'label' => 'Company',
+                'value' => \app\models\Company::findOne($learner->company_id)->company_name,
             ],
             [
-                'label' => 'Locker ID',
-                'value' => $learner->locker_id,
+                'label' => 'Locker',
+                'value' => \app\models\Locker::findOne($learner->locker_id)->locker_number,
             ],
         ],
     ]) ?>
