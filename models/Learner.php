@@ -19,7 +19,7 @@ use Yii;
  * @property Company $status
  * @property Course $course
  * @property Locker $locker
- * @property Person $person
+ * @property Person $learner0
  * @property Qualification $qualification
  * @property Status $status0
  * @property Relationship[] $relationships
@@ -61,13 +61,13 @@ class Learner extends \app\models\Person
     {
         return [
             'learner_id' => 'Learner ID',
-            'course_id' => 'Course ',
+            'course_id' => 'Course ID',
             'start_date' => 'Start Date',
             'end_date' => 'End Date',
-            'qualification_id' => 'Qualification',
-            'status_id' => 'Status',
-            'company_id' => 'Company',
-            'locker_id' => 'Locker',
+            'qualification_id' => 'Qualification ID',
+            'status_id' => 'Status ID',
+            'company_id' => 'Company ID',
+            'locker_id' => 'Locker ID',
         ];
     }
 
@@ -98,7 +98,7 @@ class Learner extends \app\models\Person
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getPerson()
+    public function getLearner0()
     {
         return $this->hasOne(Person::className(), ['person_id' => 'learner_id']);
     }

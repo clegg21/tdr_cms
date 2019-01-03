@@ -30,10 +30,9 @@ class SubjectTaught extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['subject_taught_id', 'instructor_id', 'subject_id'], 'required'],
-            [['subject_taught_id', 'instructor_id', 'subject_id'], 'default', 'value' => null],
-            [['subject_taught_id', 'instructor_id', 'subject_id'], 'integer'],
-            [['subject_taught_id'], 'unique'],
+            [['instructor_id', 'subject_id'], 'required'],
+            [['instructor_id', 'subject_id'], 'default', 'value' => null],
+            [['instructor_id', 'subject_id'], 'integer'],
             [['instructor_id'], 'exist', 'skipOnError' => true, 'targetClass' => Instructor::className(), 'targetAttribute' => ['instructor_id' => 'instructor_id']],
             [['subject_id'], 'exist', 'skipOnError' => true, 'targetClass' => Subject::className(), 'targetAttribute' => ['subject_id' => 'subject_id']],
         ];

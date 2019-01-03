@@ -28,11 +28,8 @@ class PersonType extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['person_type_id', 'person_type'], 'required'],
-            [['person_type_id'], 'default', 'value' => null],
-            [['person_type_id'], 'integer'],
+            [['person_type'], 'required'],
             [['person_type'], 'string', 'max' => 15],
-            [['person_type_id'], 'unique'],
         ];
     }
 

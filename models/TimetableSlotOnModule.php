@@ -30,10 +30,9 @@ class TimetableSlotOnModule extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['timetable_slot_module_id', 'module_id', 'timetable_slot_id'], 'required'],
-            [['timetable_slot_module_id', 'module_id', 'timetable_slot_id'], 'default', 'value' => null],
-            [['timetable_slot_module_id', 'module_id', 'timetable_slot_id'], 'integer'],
-            [['timetable_slot_module_id'], 'unique'],
+            [['module_id', 'timetable_slot_id'], 'required'],
+            [['module_id', 'timetable_slot_id'], 'default', 'value' => null],
+            [['module_id', 'timetable_slot_id'], 'integer'],
             [['module_id'], 'exist', 'skipOnError' => true, 'targetClass' => Module::className(), 'targetAttribute' => ['module_id' => 'module_id']],
             [['timetable_slot_id'], 'exist', 'skipOnError' => true, 'targetClass' => TimetableSlot::className(), 'targetAttribute' => ['timetable_slot_id' => 'timetable_slot_id']],
         ];

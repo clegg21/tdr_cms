@@ -32,11 +32,10 @@ class TimetableSlot extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['timetable_slot_id', 'start_date', 'end_date', 'location_id'], 'required'],
-            [['timetable_slot_id', 'location_id'], 'default', 'value' => null],
-            [['timetable_slot_id', 'location_id'], 'integer'],
+            [['start_date', 'end_date', 'location_id'], 'required'],
             [['start_date', 'end_date'], 'safe'],
-            [['timetable_slot_id'], 'unique'],
+            [['location_id'], 'default', 'value' => null],
+            [['location_id'], 'integer'],
             [['location_id'], 'exist', 'skipOnError' => true, 'targetClass' => Location::className(), 'targetAttribute' => ['location_id' => 'location_id']],
         ];
     }

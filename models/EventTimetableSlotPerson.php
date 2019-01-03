@@ -33,11 +33,10 @@ class EventTimetableSlotPerson extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['event_timetable_slot_person_id', 'person_id', 'event_id', 'timetable_slot_id', 'in_attendance'], 'required'],
-            [['event_timetable_slot_person_id', 'person_id', 'event_id', 'timetable_slot_id'], 'default', 'value' => null],
-            [['event_timetable_slot_person_id', 'person_id', 'event_id', 'timetable_slot_id'], 'integer'],
+            [['person_id', 'event_id', 'timetable_slot_id', 'in_attendance'], 'required'],
+            [['person_id', 'event_id', 'timetable_slot_id'], 'default', 'value' => null],
+            [['person_id', 'event_id', 'timetable_slot_id'], 'integer'],
             [['in_attendance'], 'boolean'],
-            [['event_timetable_slot_person_id'], 'unique'],
             [['event_id'], 'exist', 'skipOnError' => true, 'targetClass' => Event::className(), 'targetAttribute' => ['event_id' => 'event_id']],
             [['person_id'], 'exist', 'skipOnError' => true, 'targetClass' => Person::className(), 'targetAttribute' => ['person_id' => 'person_id']],
             [['timetable_slot_id'], 'exist', 'skipOnError' => true, 'targetClass' => TimetableSlot::className(), 'targetAttribute' => ['timetable_slot_id' => 'timetable_slot_id']],

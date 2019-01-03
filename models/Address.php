@@ -32,11 +32,10 @@ class Address extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['address_id', 'building_number', 'first_line', 'second_line', 'county', 'postcode'], 'required'],
-            [['address_id', 'building_number'], 'default', 'value' => null],
-            [['address_id', 'building_number'], 'integer'],
+            [['building_number', 'first_line', 'second_line', 'county', 'postcode'], 'required'],
+            [['building_number'], 'default', 'value' => null],
+            [['building_number'], 'integer'],
             [['first_line', 'second_line', 'county', 'postcode'], 'string', 'max' => 99],
-            [['address_id'], 'unique'],
         ];
     }
 

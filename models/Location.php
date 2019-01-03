@@ -28,11 +28,8 @@ class Location extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['location_id', 'description'], 'required'],
-            [['location_id'], 'default', 'value' => null],
-            [['location_id'], 'integer'],
+            [['description'], 'required'],
             [['description'], 'string', 'max' => 250],
-            [['location_id'], 'unique'],
         ];
     }
 

@@ -30,10 +30,9 @@ class ModuleOnCourse extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['course_module_id', 'course_id', 'module_id'], 'required'],
-            [['course_module_id', 'course_id', 'module_id'], 'default', 'value' => null],
-            [['course_module_id', 'course_id', 'module_id'], 'integer'],
-            [['course_module_id'], 'unique'],
+            [['course_id', 'module_id'], 'required'],
+            [['course_id', 'module_id'], 'default', 'value' => null],
+            [['course_id', 'module_id'], 'integer'],
             [['course_id'], 'exist', 'skipOnError' => true, 'targetClass' => Course::className(), 'targetAttribute' => ['course_id' => 'course_id']],
             [['module_id'], 'exist', 'skipOnError' => true, 'targetClass' => Module::className(), 'targetAttribute' => ['module_id' => 'module_id']],
         ];

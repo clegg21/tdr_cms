@@ -28,11 +28,8 @@ class Event extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['event_id', 'description'], 'required'],
-            [['event_id'], 'default', 'value' => null],
-            [['event_id'], 'integer'],
+            [['description'], 'required'],
             [['description'], 'string', 'max' => 250],
-            [['event_id'], 'unique'],
         ];
     }
 

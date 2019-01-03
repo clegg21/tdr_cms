@@ -10,7 +10,7 @@ use Yii;
  * @property int $parent_guardian_id
  * @property string $relationship_to_student
  *
- * @property Person $parentGuardian0
+ * @property Person $parentGuardian
  * @property Relationship[] $relationships
  */
 class ParentGuardian extends \app\models\Person
@@ -52,7 +52,7 @@ class ParentGuardian extends \app\models\Person
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getParentGuardian0()
+    public function getParentGuardian()
     {
         return $this->hasOne(Person::className(), ['person_id' => 'parent_guardian_id']);
     }

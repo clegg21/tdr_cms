@@ -11,7 +11,7 @@ use Yii;
  * @property int $company_id
  *
  * @property Company $company
- * @property Person $companyContact0
+ * @property Person $companyContact
  */
 class CompanyContact extends \app\models\Person
 {
@@ -60,7 +60,7 @@ class CompanyContact extends \app\models\Person
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCompanyContact0()
+    public function getCompanyContact()
     {
         return $this->hasOne(Person::className(), ['person_id' => 'company_contact_id']);
     }

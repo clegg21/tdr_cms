@@ -29,11 +29,8 @@ class Module extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['module_id', 'description'], 'required'],
-            [['module_id'], 'default', 'value' => null],
-            [['module_id'], 'integer'],
+            [['description'], 'required'],
             [['description'], 'string', 'max' => 250],
-            [['module_id'], 'unique'],
         ];
     }
 

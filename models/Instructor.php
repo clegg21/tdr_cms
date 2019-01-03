@@ -10,7 +10,7 @@ use Yii;
  * @property int $instructor_id
  * @property int $subject_taught
  *
- * @property Person $instructor0
+ * @property Person $instructor
  * @property SubjectTaught[] $subjectTaughts
  */
 class Instructor extends \app\models\Person
@@ -51,7 +51,7 @@ class Instructor extends \app\models\Person
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getInstructor0()
+    public function getInstructor()
     {
         return $this->hasOne(Person::className(), ['person_id' => 'instructor_id']);
     }

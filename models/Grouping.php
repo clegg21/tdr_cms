@@ -31,10 +31,9 @@ class Grouping extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['grouping_id', 'group_number', 'person_id', 'course_id'], 'required'],
-            [['grouping_id', 'group_number', 'person_id', 'course_id'], 'default', 'value' => null],
-            [['grouping_id', 'group_number', 'person_id', 'course_id'], 'integer'],
-            [['grouping_id'], 'unique'],
+            [['group_number', 'person_id', 'course_id'], 'required'],
+            [['group_number', 'person_id', 'course_id'], 'default', 'value' => null],
+            [['group_number', 'person_id', 'course_id'], 'integer'],
             [['course_id'], 'exist', 'skipOnError' => true, 'targetClass' => Course::className(), 'targetAttribute' => ['course_id' => 'course_id']],
             [['person_id'], 'exist', 'skipOnError' => true, 'targetClass' => Person::className(), 'targetAttribute' => ['person_id' => 'person_id']],
         ];

@@ -40,13 +40,12 @@ class Person extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['person_id', 'first_name', 'last_name', 'address_id', 'email_address', 'phone_number', 'person_type_id'], 'required'],
-            [['person_id', 'address_id', 'person_type_id'], 'default', 'value' => null],
-            [['person_id', 'address_id', 'person_type_id'], 'integer'],
+            [['first_name', 'last_name', 'address_id', 'email_address', 'phone_number', 'person_type_id'], 'required'],
+            [['address_id', 'person_type_id'], 'default', 'value' => null],
+            [['address_id', 'person_type_id'], 'integer'],
             [['first_name', 'last_name'], 'string', 'max' => 30],
             [['email_address'], 'string', 'max' => 99],
             [['phone_number'], 'string', 'max' => 15],
-            [['person_id'], 'unique'],
             [['address_id'], 'exist', 'skipOnError' => true, 'targetClass' => Address::className(), 'targetAttribute' => ['address_id' => 'address_id']],
             [['person_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => PersonType::className(), 'targetAttribute' => ['person_type_id' => 'person_type_id']],
         ];
@@ -64,7 +63,7 @@ class Person extends \yii\db\ActiveRecord
             'address_id' => 'Address ID',
             'email_address' => 'Email Address',
             'phone_number' => 'Phone Number',
-            'person_type_id' => 'Person Type',
+            'person_type_id' => 'Person Type ID',
         ];
     }
 

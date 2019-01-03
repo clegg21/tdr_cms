@@ -30,10 +30,9 @@ class Relationship extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['relationship_id', 'student_id', 'parent_guardian_id'], 'required'],
-            [['relationship_id', 'student_id', 'parent_guardian_id'], 'default', 'value' => null],
-            [['relationship_id', 'student_id', 'parent_guardian_id'], 'integer'],
-            [['relationship_id'], 'unique'],
+            [['student_id', 'parent_guardian_id'], 'required'],
+            [['student_id', 'parent_guardian_id'], 'default', 'value' => null],
+            [['student_id', 'parent_guardian_id'], 'integer'],
             [['student_id'], 'exist', 'skipOnError' => true, 'targetClass' => Learner::className(), 'targetAttribute' => ['student_id' => 'learner_id']],
             [['parent_guardian_id'], 'exist', 'skipOnError' => true, 'targetClass' => ParentGuardian::className(), 'targetAttribute' => ['parent_guardian_id' => 'parent_guardian_id']],
         ];
