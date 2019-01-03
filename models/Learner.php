@@ -61,13 +61,13 @@ class Learner extends \app\models\Person
     {
         return [
             'learner_id' => 'Learner ID',
-            'course_id' => 'Course ID',
+            'course_id' => 'Course ',
             'start_date' => 'Start Date',
             'end_date' => 'End Date',
-            'qualification_id' => 'Qualification ID',
-            'status_id' => 'Status ID',
-            'company_id' => 'Company ID',
-            'locker_id' => 'Locker ID',
+            'qualification_id' => 'Qualification',
+            'status_id' => 'Status',
+            'company_id' => 'Company',
+            'locker_id' => 'Locker',
         ];
     }
 

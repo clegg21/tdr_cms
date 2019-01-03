@@ -24,9 +24,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($person, 'phone_number')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($person, 'person_type_id')->textInput() ?>
+    <?= $form->field($person, 'person_type_id')->dropDownList(
+        \yii\helpers\ArrayHelper::map(\app\models\PersonType::find()->asArray()->all(), 'person_type_id', 'person_type')
+    ) ?>
 
-    <?= $form->field($learner, 'course_id')->textInput() ?>
+    <?= $form->field($learner, 'course_id')->dropDownList(
+        \yii\helpers\ArrayHelper::map(\app\models\Course::find()->asArray()->all(), 'course_id', 'description')
+    ) ?>
 
     <?= $form->field($learner, 'start_date')->widget(\yii\jui\DatePicker::class, [
         'dateFormat' => 'dd-MMM-yyyy',
@@ -36,13 +40,21 @@ use yii\widgets\ActiveForm;
         'dateFormat' => 'dd-MMM-yyyy',
     ]) ?>
 
-    <?= $form->field($learner, 'qualification_id')->textInput() ?>
+    <?= $form->field($learner, 'qualification_id')->dropDownList(
+            \yii\helpers\ArrayHelper::map(\app\models\Qualification::find()->asArray()->all(), 'qualification_id', 'qualification_name')
+    ) ?>
 
-    <?= $form->field($learner, 'status_id')->textInput() ?>
+    <?= $form->field($learner, 'status_id')->dropDownList(
+            \yii\helpers\ArrayHelper::map(\app\models\Status::find()->asArray()->all(), 'status_id', 'status_description')
+    ) ?>
 
-    <?= $form->field($learner, 'company_id')->textInput() ?>
+    <?= $form->field($learner, 'company_id')->dropDownList(
+            \yii\helpers\ArrayHelper::map(\app\models\Company::find()->asArray()->all(), 'company_id', 'company_name')
+    ) ?>
 
-    <?= $form->field($learner, 'locker_id')->textInput() ?>
+    <?= $form->field($learner, 'locker_id')->dropDownList(
+            \yii\helpers\ArrayHelper::map(\app\models\Locker::find()->asArray()->all(), 'locker_id', 'locker_number')
+    ) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
