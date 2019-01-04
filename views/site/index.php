@@ -69,14 +69,14 @@ $this->title = 'My Yii Application';
             </div>
             <div class="col-lg-2">
                 <p>
-                    <?= Html::a('View Company Contacts', ['company-contact/index'], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('View Instructors', ['instructor/index'], ['class' => 'btn btn-success']) ?>
                 </p>
             </div>
             <div class="col-lg-2">
-<!--                <p>-->
-<!--                    --><?//= Html::a('View Lockers', ['locker/index'], ['class' => 'btn btn-success']) ?>
-<!--                </p>-->
-<!--            </div>-->
+                <p>
+                    <?= Html::a('View Company Contacts', ['company-contact/index'], ['class' => 'btn btn-success']) ?>
+                </p>
+            </div>
 <!--            <div class="col-lg-2">-->
 <!--                <p>-->
 <!--                    --><?//= Html::a('View Person Types', ['person-type/index'], ['class' => 'btn btn-success']) ?>
