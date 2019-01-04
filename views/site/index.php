@@ -77,11 +77,11 @@ $this->title = 'My Yii Application';
                     <?= Html::a('View Company Contacts', ['company-contact/index'], ['class' => 'btn btn-success']) ?>
                 </p>
             </div>
-<!--            <div class="col-lg-2">-->
-<!--                <p>-->
-<!--                    --><?//= Html::a('View Person Types', ['person-type/index'], ['class' => 'btn btn-success']) ?>
-<!--                </p>-->
-<!--            </div>-->
+            <div class="col-lg-2">
+                <p>
+                    <?= Html::a('View Parents/Guardians', ['parent-guardian/index'], ['class' => 'btn btn-success']) ?>
+                </p>
+            </div>
         </div>
     </div>
 
