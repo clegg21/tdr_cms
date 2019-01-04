@@ -63,7 +63,7 @@ class Person extends \yii\db\ActiveRecord
             'address_id' => 'Address ID',
             'email_address' => 'Email Address',
             'phone_number' => 'Phone Number',
-            'person_type_id' => 'Person Type ID',
+            'person_type_id' => 'Person Type',
         ];
     }
 

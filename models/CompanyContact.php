@@ -45,7 +45,7 @@ class CompanyContact extends \app\models\Person
     {
         return [
             'company_contact_id' => 'Company Contact ID',
-            'company_id' => 'Company ID',
+            'company_id' => 'Company',
         ];
     }
 

@@ -21,7 +21,7 @@ use Yii;
  * @property Locker $locker
  * @property Person $learner
  * @property Qualification $qualification
- * @property Status $status0
+ * @property Status $status
  * @property Relationship[] $relationships
  */
 class Learner extends \app\models\Person
