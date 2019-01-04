@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $company_contact app\models\CompanyContact */
 /* @var $person app\models\Person */
 
-$this->title = $company_contact->company_contact_id;
+$this->title = $person->first_name . " " . $person->last_name;
 $this->params['breadcrumbs'][] = ['label' => 'Company Contacts', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

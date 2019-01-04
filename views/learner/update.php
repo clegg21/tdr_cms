@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $learner app\models\Learner */
 /* @var $person app\models\Person */
 
-$this->title = 'Update Learner: ' . $learner->learner_id;
+$this->title = 'Update Learner: ' . $person->first_name . " " . $person->last_name;
 $this->params['breadcrumbs'][] = ['label' => 'Learners', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $learner->learner_id, 'url' => ['view', 'id' => $learner->learner_id]];
+$this->params['breadcrumbs'][] = ['label' => $person->first_name . " " . $person->last_name, 'url' => ['view', 'id' => $learner->learner_id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="learner-update">

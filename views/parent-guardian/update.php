@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $parent_guardian app\models\ParentGuardian */
 /* @var $person app\models\Person */
 
-$this->title = 'Update Parent/Guardian: ' . $parent_guardian->parent_guardian_id;
+$this->title = 'Update Parent/Guardian: ' . $person->first_name . " " . $person->last_name;
 $this->params['breadcrumbs'][] = ['label' => 'Parent/Guardians', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $parent_guardian->parent_guardian_id, 'url' => ['view', 'id' => $parent_guardian->parent_guardian_id]];
+$this->params['breadcrumbs'][] = ['label' => $person->first_name . " " . $person->last_name, 'url' => ['view', 'id' => $parent_guardian->parent_guardian_id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="parent-guardian-update">

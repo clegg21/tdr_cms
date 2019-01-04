@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $instructor app\models\Instructor */
 /* @var $person app\models\Person */
 
-$this->title = $instructor->instructor_id;
+$this->title = $person->first_name . " " . $person->last_name;
 $this->params['breadcrumbs'][] = ['label' => 'Instructors', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

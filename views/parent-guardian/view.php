@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $parent_guardian app\models\ParentGuardian */
 /* @var $person app\models\Person */
 
-$this->title = $parent_guardian->parent_guardian_id;
+$this->title = $person->first_name . " " . $person->last_name;
 $this->params['breadcrumbs'][] = ['label' => 'Parent/Guardians', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
