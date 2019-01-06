@@ -70,6 +70,9 @@ class CompanyContactController extends PersonController
         $person = new Person();
         $company_contact = new CompanyContact();
 
+        // Hardcoded for time being
+        $person->person_type_id = 4;
+
         if ($person->load(Yii::$app->request->post()) && $person->save()) {
             $company_contact->company_contact_id = $person->person_id;
         }

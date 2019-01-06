@@ -2,18 +2,19 @@
 
 namespace app\controllers;
 
-use Yii;
 use app\models\Person;
-use app\models\Instructor;
-use app\models\InstructorSearch;
+use app\models\ParentGuardian;
+use Yii;
+use app\models\Relationship;
+use app\models\RelationshipSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * InstructorController implements the CRUD actions for Instructor model.
+ * RelationshipController implements the CRUD actions for Relationship model.
  */
-class InstructorController extends PersonController
+class RelationshipController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -31,12 +32,12 @@ class InstructorController extends PersonController
     }
 
     /**
-     * Lists all Instructor models.
+     * Lists all Relationship models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new InstructorSearch();
+        $searchModel = new RelationshipSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,52 +47,46 @@ class InstructorController extends PersonController
     }
 
     /**
-     * Displays a single Instructor model.
+     * Displays a single Relationship model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        $person =  Person::find()->where(['person_id' => $id])->one();
+        $relationship = $this->findModel($id);
+        $learner =  Person::find()->where(['person_id' => $relationship->student_id])->one();
+        $parent_guardian =  ParentGuardian::find()->where(['parent_guardian_id' => $relationship->parent_guardian_id])->one();
+        $parent_guardian_person =  Person::find()->where(['person_id' => $relationship->parent_guardian_id])->one();
 
         return $this->render('view', [
-            'instructor' => $this->findModel($id),
-            'person' => $person
+            'relationship' => $relationship,
+            'learner' => $learner,
+            'parent_guardian' => $parent_guardian,
+            'parent_guardian_person' => $parent_guardian_person
         ]);
     }
 
     /**
-     * Creates a new Instructor model.
+     * Creates a new Relationship model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $person = new Person();
-        $instructor = new Instructor();
+        $model = new Relationship();
 
-        // Hardcoded for time being
-        $person->person_type_id = 2;
-
-        if ($person->load(Yii::$app->request->post()) && $person->save()) {
-            $instructor->instructor_id = $person->person_id;
-        }
-
-        $instructor->instructor_id = $person->person_id;
-
-        if ($instructor->load(Yii::$app->request->post()) && $instructor->save()) {
-            return $this->redirect(['view', 'id' => $instructor->instructor_id]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->relationship_id]);
         }
 
         return $this->render('create', [
-            'person' => $person,
-            'instructor' => $instructor,
+            'model' => $model,
         ]);
     }
 
     /**
-     * Updates an existing Instructor model.
+     * Updates an existing Relationship model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -99,21 +94,19 @@ class InstructorController extends PersonController
      */
     public function actionUpdate($id)
     {
-        $person =  Person::find()->where(['person_id' => $id])->one();
-        $instructor = $this->findModel($id);
+        $model = $this->findModel($id);
 
-        if ($person->load(Yii::$app->request->post()) && $person->save() && $instructor->load(Yii::$app->request->post()) && $instructor->save()) {
-            return $this->redirect(['view', 'id' => $instructor->instructor_id]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->relationship_id]);
         }
 
         return $this->render('update', [
-            'person' => $person,
-            'instructor' => $instructor,
+            'model' => $model,
         ]);
     }
 
     /**
-     * Deletes an existing Instructor model.
+     * Deletes an existing Relationship model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -122,21 +115,20 @@ class InstructorController extends PersonController
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        PersonController::actionDeleteWithoutRedirect($id);
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Instructor model based on its primary key value.
+     * Finds the Relationship model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Instructor the loaded model
+     * @return Relationship the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Instructor::findOne($id)) !== null) {
+        if (($model = Relationship::findOne($id)) !== null) {
             return $model;
         }
 

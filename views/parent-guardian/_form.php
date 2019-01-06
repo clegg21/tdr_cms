@@ -23,10 +23,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($person, 'phone_number')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($person, 'person_type_id')->dropDownList(
-        \yii\helpers\ArrayHelper::map(\app\models\PersonType::find()->asArray()->all(), 'person_type_id', 'person_type')
-    ) ?>
-
     <?= $form->field($parent_guardian, 'relationship_to_student')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">

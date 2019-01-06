@@ -71,6 +71,9 @@ class ParentGuardianController extends Controller
         $person = new Person();
         $parent_guardian = new ParentGuardian();
 
+        // Hardcoded for time being
+        $person->person_type_id = 3;
+
         if ($person->load(Yii::$app->request->post()) && $person->save()) {
             $parent_guardian->parent_guardian_id = $person->person_id;
         }

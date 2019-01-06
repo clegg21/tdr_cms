@@ -70,6 +70,9 @@ class LearnerController extends PersonController
         $person = new Person();
         $learner = new Learner();
 
+        // Hardcoded for time being
+        $person->person_type_id = 1;
+
         if ($person->load(Yii::$app->request->post()) && $person->save()) {
             $learner->learner_id = $person->person_id;
         }

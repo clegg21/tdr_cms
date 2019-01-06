@@ -130,4 +130,13 @@ class Person extends \yii\db\ActiveRecord
     {
         return $this->hasOne(PersonType::className(), ['person_type_id' => 'person_type_id']);
     }
+
+    /**
+     * @return String
+     */
+    public function getFullName()
+    {
+        return $this->first_name ." ". $this->last_name;
+    }
+
 }
