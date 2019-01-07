@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'TDR CMS';
 ?>
 <div class="site-index">
 
@@ -108,7 +108,8 @@ $this->title = 'My Yii Application';
                 <p>
                     <?= Html::a('View Grouping', ['grouping/index'], ['class' => 'btn btn-success']) ?>
                 </p>
-            </div><div class="col-lg-3">
+            </div>
+            <div class="col-lg-3">
                 <p>
                     <?= Html::a('View Location', ['location/index'], ['class' => 'btn btn-success']) ?>
                 </p>
@@ -121,6 +122,18 @@ $this->title = 'My Yii Application';
             <div class="col-lg-3">
                 <p>
                     <?= Html::a('View Timetable Slots', ['timetable-slot/index'], ['class' => 'btn btn-success']) ?>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <p>
+                    <?= Html::a('View Timetable Slot On Modules', ['timetable-slot-on-module/index'], ['class' => 'btn btn-success']) ?>
+                </p>
+            </div>
+            <div class="col-lg-3">
+                <p>
+                    <?= Html::a('View event-timetable-slot-person', ['event-timetable-slot-person/index'], ['class' => 'btn btn-success']) ?>
                 </p>
             </div>
         </div>
