@@ -76,7 +76,7 @@ class ModuleOnCourseSearch extends ModuleOnCourse
                     'desc' => ['course_id' => SORT_DESC],
                     'default' => SORT_ASC
                 ],
-                'last_name' => [
+                'module_id' => [
                     'asc' => ['module_id' => SORT_ASC],
                     'desc' => ['module_id' => SORT_DESC],
                     'default' => SORT_ASC,

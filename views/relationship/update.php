@@ -3,11 +3,11 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Relationship */
+/* @var $relationship app\models\Relationship */
 
-$this->title = 'Update Relationship: ' . $model->relationship_id;
+$this->title = 'Update Relationship: ' . $relationship->relationship_id;
 $this->params['breadcrumbs'][] = ['label' => 'Relationships', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->relationship_id, 'url' => ['view', 'id' => $model->relationship_id]];
+$this->params['breadcrumbs'][] = ['label' => $relationship->relationship_id, 'url' => ['view', 'id' => $relationship->relationship_id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="relationship-update">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = 'Update';
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
-        'model' => $model,
+        'relationship' => $relationship,
     ]) ?>
 
 </div>

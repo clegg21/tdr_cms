@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Relationship */
+/* @var $relationship app\models\Relationship */
 
 $this->title = 'Create Relationship';
 $this->params['breadcrumbs'][] = ['label' => 'Relationships', 'url' => ['index']];
@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
-        'model' => $model,
+        'relationship' => $relationship,
     ]) ?>
 
 </div>

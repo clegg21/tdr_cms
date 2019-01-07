@@ -2,19 +2,19 @@
 
 namespace app\controllers;
 
-use app\models\Person;
-use app\models\ParentGuardian;
 use Yii;
-use app\models\Relationship;
-use app\models\RelationshipSearch;
+use app\models\Course;
+use app\models\Person;
+use app\models\Grouping;
+use app\models\GroupingSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * RelationshipController implements the CRUD actions for Relationship model.
+ * GroupingController implements the CRUD actions for Grouping model.
  */
-class RelationshipController extends Controller
+class GroupingController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -32,12 +32,12 @@ class RelationshipController extends Controller
     }
 
     /**
-     * Lists all Relationship models.
+     * Lists all Grouping models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new RelationshipSearch();
+        $searchModel = new GroupingSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -47,46 +47,48 @@ class RelationshipController extends Controller
     }
 
     /**
-     * Displays a single Relationship model.
+     * Displays a single Grouping model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        $relationship = $this->findModel($id);
-        $learner =  Person::find()->where(['person_id' => $relationship->student_id])->one();
-        $parent_guardian =  ParentGuardian::find()->where(['parent_guardian_id' => $relationship->parent_guardian_id])->one();
-        $parent_guardian_person =  Person::find()->where(['person_id' => $relationship->parent_guardian_id])->one();
+        $grouping = $this->findModel($id);
+        $course = Course::find()->where(['course_id' => $grouping->course_id])->one();
+        $person = Person::find()->where(['person_id' => $grouping->person_id])->one();
 
         return $this->render('view', [
-            'relationship' => $relationship,
-            'learner' => $learner,
-            'parent_guardian' => $parent_guardian,
-            'parent_guardian_person' => $parent_guardian_person
+            'grouping' => $grouping,
+            'course' => $course,
+            'person' => $person,
         ]);
     }
 
     /**
-     * Creates a new Relationship model.
+     * Creates a new Grouping model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $relationship = new Relationship();
+        $grouping = new Grouping();
+        $course = new Course();
+        $person = new Person();
 
-        if ($relationship->load(Yii::$app->request->post()) && $relationship->save()) {
-            return $this->redirect(['view', 'id' => $relationship->relationship_id]);
+        if ($grouping->load(Yii::$app->request->post()) && $grouping->save()) {
+            return $this->redirect(['view', 'id' => $grouping->grouping_id]);
         }
 
         return $this->render('create', [
-            'relationship' => $relationship,
+            'grouping' => $grouping,
+            'course' => $course,
+            'person' => $person,
         ]);
     }
 
     /**
-     * Updates an existing Relationship model.
+     * Updates an existing Grouping model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,19 +96,23 @@ class RelationshipController extends Controller
      */
     public function actionUpdate($id)
     {
-        $relationship = $this->findModel($id);
+        $grouping = $this->findModel($id);
+        $course = Course::find()->where(['course_id' => $grouping->course_id])->one();
+        $person = Person::find()->where(['person_id' => $grouping->person_id])->one();
 
-        if ($relationship->load(Yii::$app->request->post()) && $relationship->save()) {
-            return $this->redirect(['view', 'id' => $relationship->relationship_id]);
+        if ($grouping->load(Yii::$app->request->post()) && $grouping->save()) {
+            return $this->redirect(['view', 'id' => $grouping->grouping_id]);
         }
 
         return $this->render('update', [
-            'relationship' => $relationship,
+            'grouping' => $grouping,
+            'course' => $course,
+            'person' => $person,
         ]);
     }
 
     /**
-     * Deletes an existing Relationship model.
+     * Deletes an existing Grouping model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -120,15 +126,15 @@ class RelationshipController extends Controller
     }
 
     /**
-     * Finds the Relationship model based on its primary key value.
+     * Finds the Grouping model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Relationship the loaded model
+     * @return Grouping the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Relationship::findOne($id)) !== null) {
+        if (($model = Grouping::findOne($id)) !== null) {
             return $model;
         }
 

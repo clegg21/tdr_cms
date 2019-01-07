@@ -47,8 +47,8 @@ class Grouping extends \yii\db\ActiveRecord
         return [
             'grouping_id' => 'Grouping ID',
             'group_number' => 'Group Number',
-            'person_id' => 'Person ID',
-            'course_id' => 'Course ID',
+            'person_id' => 'Person',
+            'course_id' => 'Course',
         ];
     }
 
