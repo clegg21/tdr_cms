@@ -108,6 +108,15 @@ $this->title = 'My Yii Application';
                 <p>
                     <?= Html::a('View Grouping', ['grouping/index'], ['class' => 'btn btn-success']) ?>
                 </p>
+            </div><div class="col-lg-3">
+                <p>
+                    <?= Html::a('View Location', ['location/index'], ['class' => 'btn btn-success']) ?>
+                </p>
+            </div>
+            <div class="col-lg-3">
+                <p>
+                    <?= Html::a('View Events', ['event/index'], ['class' => 'btn btn-success']) ?>
+                </p>
             </div>
         </div>
     </div>
