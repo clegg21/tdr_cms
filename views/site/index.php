@@ -18,6 +18,7 @@ $this->title = 'My Yii Application';
 
     <div class="body-content">
 
+        <h2>User Management</h2>
         <div class="row">
             <div class="col-lg-3">
                 <p>
@@ -70,28 +71,37 @@ $this->title = 'My Yii Application';
             </div>
             <div class="col-lg-3">
                 <p>
-                    <?= Html::a('View Courses', ['course/index'], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('View Relationships', ['relationship/index'], ['class' => 'btn btn-success']) ?>
                 </p>
             </div>
-            <div class="col-lg-3">
-                <p>
-                    <?= Html::a('View Subjects', ['subject/index'], ['class' => 'btn btn-success']) ?>
-                </p>
-            </div>
-
             <div class="col-lg-3">
                 <p>
                     <?= Html::a('View Companies', ['company/index'], ['class' => 'btn btn-success']) ?>
                 </p>
             </div>
         </div>
+        <h2>Learning Management</h2>
         <div class="row">
             <div class="col-lg-3">
                 <p>
-                    <?= Html::a('View Relationships', ['relationship/index'], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('View Subjects', ['subject/index'], ['class' => 'btn btn-success']) ?>
+                </p>
+            </div>
+            <div class="col-lg-3">
+                <p>
+                    <?= Html::a('View Courses', ['course/index'], ['class' => 'btn btn-success']) ?>
+                </p>
+            </div>
+            <div class="col-lg-3">
+                <p>
+                    <?= Html::a('View Modules', ['module/index'], ['class' => 'btn btn-success']) ?>
+                </p>
+            </div>
+            <div class="col-lg-3">
+                <p>
+                    <?= Html::a('View Modules On Courses', ['module-on-course/index'], ['class' => 'btn btn-success']) ?>
                 </p>
             </div>
         </div>
     </div>
-
 </div>

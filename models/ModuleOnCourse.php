@@ -45,8 +45,8 @@ class ModuleOnCourse extends \yii\db\ActiveRecord
     {
         return [
             'course_module_id' => 'Course Module ID',
-            'course_id' => 'Course ID',
-            'module_id' => 'Module ID',
+            'course_id' => 'Course',
+            'module_id' => 'Module',
         ];
     }
 
