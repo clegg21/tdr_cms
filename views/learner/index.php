@@ -55,8 +55,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function($learner) {$course = \app\models\Course::find()->where(['course_id'=>$learner->course_id])->one();
                 return $course->description;},
             ],
-            'start_date',
-            'end_date',
+            'start_date:date',
+            'end_date:date',
             [
                 'label' => 'Qualification',
                 'attribute' => 'qualification_id',

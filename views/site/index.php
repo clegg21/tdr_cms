@@ -118,6 +118,11 @@ $this->title = 'My Yii Application';
                     <?= Html::a('View Events', ['event/index'], ['class' => 'btn btn-success']) ?>
                 </p>
             </div>
+            <div class="col-lg-3">
+                <p>
+                    <?= Html::a('View Timetable Slots', ['timetable-slot/index'], ['class' => 'btn btn-success']) ?>
+                </p>
+            </div>
         </div>
     </div>
 </div>
