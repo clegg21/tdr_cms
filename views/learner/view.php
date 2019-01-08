@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Timetable', ['calendar/index', 'id' => $person->person_id], ['class' => 'btn btn-primary']) ?>
     </p>
 
 

@@ -43,14 +43,20 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+        'authManager' => [
+          'class' => 'yii\rbac\DbManager',
+        ],
+    ],
+    'modules' => [
+        'admin' => [
+            'class' => 'mdm\admin\Module'
+        ]
     ],
     'params' => $params,
 ];

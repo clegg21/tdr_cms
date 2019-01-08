@@ -1,5 +1,5 @@
 <?php $this->title = 'Timetable'; ?>
-<div class="site-index">
+<div class="calendar-index">
 
     <h1>Timetable</h1>
     <p>
