@@ -53,6 +53,7 @@ class InstructorController extends PersonController
      */
     public function actionView($id)
     {
+        // Before we can render the Instructor we need to find the associated supertype Person
         $person =  Person::find()->where(['person_id' => $id])->one();
 
         return $this->render('view', [
@@ -75,6 +76,7 @@ class InstructorController extends PersonController
         $person->person_type_id = 2;
 
         if ($person->load(Yii::$app->request->post()) && $person->save()) {
+            // Assigning the person_id to the instructor_id will keep the data consistent
             $instructor->instructor_id = $person->person_id;
         }
 
@@ -99,6 +101,7 @@ class InstructorController extends PersonController
      */
     public function actionUpdate($id)
     {
+        // Before we can edit the Instructor we need to find the associated supertype Person
         $person =  Person::find()->where(['person_id' => $id])->one();
         $instructor = $this->findModel($id);
 
@@ -122,6 +125,7 @@ class InstructorController extends PersonController
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        // We need to delete the Person as well as the Instructor without redirecting to the index page of Person
         PersonController::actionDeleteWithoutRedirect($id);
 
         return $this->redirect(['index']);

@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Course', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
+    <!--    Using the models passed in we can display the user friendly data rather than ids using a simple anonymous function-->
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,

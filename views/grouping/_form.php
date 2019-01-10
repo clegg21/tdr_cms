@@ -16,6 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($grouping, 'group_number')->textInput() ?>
 
+    <!--    concatenate first and last name into one dropdown-->
     <?= $form->field($grouping, 'person_id')->dropDownList(
         \yii\helpers\ArrayHelper::map(\app\models\Person::find()->asArray()->all(),
             'person_id',
@@ -24,6 +25,7 @@ use yii\widgets\ActiveForm;
             })
     ) ?>
 
+    <!--    show course description rather than id-->
     <?= $form->field($grouping, 'course_id')->dropDownList(
         \yii\helpers\ArrayHelper::map(\app\models\Course::find()->asArray()->all(), 'course_id', 'description')
     ) ?>

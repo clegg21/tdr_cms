@@ -52,6 +52,7 @@ class LearnerController extends PersonController
      */
     public function actionView($id)
     {
+        // Before we can render the Learner we need to find the associated supertype Person
         $person =  Person::find()->where(['person_id' => $id])->one();
 
         return $this->render('view', [
@@ -74,6 +75,7 @@ class LearnerController extends PersonController
         $person->person_type_id = 1;
 
         if ($person->load(Yii::$app->request->post()) && $person->save()) {
+            // Assigning the person_id to the learner_id will keep the data consistent
             $learner->learner_id = $person->person_id;
         }
 
@@ -98,6 +100,7 @@ class LearnerController extends PersonController
      */
     public function actionUpdate($id)
     {
+        // Before we can edit the Learner we need to find the associated supertype Person
         $person =  Person::find()->where(['person_id' => $id])->one();
         $learner = $this->findModel($id);
 
@@ -121,6 +124,7 @@ class LearnerController extends PersonController
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        // We need to delete the Person as well as the Learner without redirecting to the index page of Person
         PersonController::actionDeleteWithoutRedirect($id);
 
         return $this->redirect(['index']);

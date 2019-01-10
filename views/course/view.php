@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+    <!--    Display the subject name, rather than id-->
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [

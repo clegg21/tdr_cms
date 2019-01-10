@@ -45,6 +45,7 @@ class LearnerSearch extends Learner
      */
     public function search($params)
     {
+        // We need to join the database tables together so we can access all the data about the Learner
         $query = Learner::find();
         $query->leftJoin('person', 'learner.learner_id=person.person_id');
         $query->leftJoin('course', 'learner.course_id=course.course_id');
@@ -67,7 +68,7 @@ class LearnerSearch extends Learner
             return $dataProvider;
         }
 
-        // grid filtering conditions
+        // grid filtering conditions, we need to filter the person details to so that we can sort and search them
         $query->andFilterWhere([
             'learner_id' => $this->learner_id,
             'start_date' => $this->start_date,
@@ -84,6 +85,7 @@ class LearnerSearch extends Learner
             ->andFilterWhere(['ilike', 'person.email_address', $this->email_address])
             ->andFilterWhere(['ilike', 'person.phone_number', $this->phone_number]);
 
+        // This allows the user to sort the columns
         $dataProvider->setSort([
             'attributes' => [
                 'first_name' => [

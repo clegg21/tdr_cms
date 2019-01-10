@@ -23,6 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($person, 'phone_number')->textInput(['maxlength' => true]) ?>
 
+    <!--    Create a dropdown with the associated company name, rather than the id -->
     <?= $form->field($company_contact, 'company_id')->dropDownList(
         \yii\helpers\ArrayHelper::map(\app\models\Company::find()->asArray()->all(), 'company_id', 'company_name')
     ) ?>

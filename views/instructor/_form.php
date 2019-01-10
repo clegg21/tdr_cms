@@ -23,6 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($person, 'phone_number')->textInput(['maxlength' => true]) ?>
 
+    <!--    Create a dropdown with the associated subject_name, rather than the id -->
     <?= $form->field($instructor, 'subject_taught')->dropDownList(
         \yii\helpers\ArrayHelper::map(\app\models\Subject::find()->asArray()->all(), 'subject_id', 'subject_name')
     ) ?>

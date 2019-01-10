@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+    <!--    Display the user friendly data, rather than id-->
     <?= DetailView::widget([
         'model' => $instructor,
         'attributes' => [

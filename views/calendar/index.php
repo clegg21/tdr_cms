@@ -5,6 +5,8 @@
     <p>
         <?php
 
+        // Loop through the events in the array which was passed in
+
         $events_for_calendar = [];
         foreach ($calendar_entries as $entry)
         {
@@ -16,6 +18,7 @@
             $events_for_calendar[] = $calendar_event;
         }
         ?>
+<!--        Render the timetable-->
         <?= \yii2fullcalendar\yii2fullcalendar::widget(array('events'=> $events_for_calendar,)); ?>
     </p>
 </div>

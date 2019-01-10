@@ -45,6 +45,7 @@ class InstructorSearch extends Instructor
      */
     public function search($params)
     {
+        // We need to join the database tables together so we can access all the data about the Instructor
         $query = Instructor::find();
         $query->leftJoin('person', 'instructor.instructor_id=person.person_id');
         $query->leftJoin('subject', 'instructor.subject_taught=subject.subject_id');
@@ -63,7 +64,7 @@ class InstructorSearch extends Instructor
             return $dataProvider;
         }
 
-        // grid filtering conditions
+        // grid filtering conditions, we need to filter the person details to so that we can sort and search them
         $query->andFilterWhere([
             'instructor_id' => $this->instructor_id,
             'subject_taught' => $this->subject_taught,
@@ -73,6 +74,7 @@ class InstructorSearch extends Instructor
         ->andFilterWhere(['ilike', 'person.email_address', $this->email_address])
         ->andFilterWhere(['ilike', 'person.phone_number', $this->phone_number]);
 
+        // This allows the user to sort the columns
         $dataProvider->setSort([
             'attributes' => [
                 'first_name' => [

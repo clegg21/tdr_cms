@@ -45,6 +45,7 @@ class CompanyContactSearch extends CompanyContact
      */
     public function search($params)
     {
+        // We need to join the database tables together so we can access all the data about the CompanyContact
         $query = CompanyContact::find();
         $query->leftJoin('person', 'company_contact.company_contact_id=person.person_id');
         $query->leftJoin('company', 'company_contact.company_id=company.company_id');
@@ -63,7 +64,7 @@ class CompanyContactSearch extends CompanyContact
             return $dataProvider;
         }
 
-        // grid filtering conditions
+        // grid filtering conditions, we need to filter the person details to so that we can sort and search them
         $query->andFilterWhere([
             'company_contact_id' => $this->company_contact_id,
             'company_id' => $this->company_id,
@@ -73,6 +74,7 @@ class CompanyContactSearch extends CompanyContact
         ->andFilterWhere(['ilike', 'person.email_address', $this->email_address])
         ->andFilterWhere(['ilike', 'person.phone_number', $this->phone_number]);
 
+        // This allows the user to sort the columns
         $dataProvider->setSort([
             'attributes' => [
                 'first_name' => [

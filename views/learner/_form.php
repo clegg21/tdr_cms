@@ -12,6 +12,7 @@ use yii\widgets\ActiveForm;
 
 <div class="learner-form">
 
+    <!--    Create dropdowns with the user friendly data, rather than the id -->
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($person, 'first_name')->textInput(['maxlength' => true]) ?>
@@ -28,6 +29,7 @@ use yii\widgets\ActiveForm;
         \yii\helpers\ArrayHelper::map(\app\models\Course::find()->asArray()->all(), 'course_id', 'description')
     ) ?>
 
+    <!--    Create a date pickers -->
     <?= $form->field($learner, 'start_date')->widget(\yii\jui\DatePicker::class, [
         'dateFormat' => 'dd-MMM-yyyy',
     ]) ?>

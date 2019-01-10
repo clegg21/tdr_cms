@@ -45,6 +45,7 @@ class ParentGuardianSearch extends ParentGuardian
      */
     public function search($params)
     {
+        // We need to join the database tables together so we can access all the data about the Parent/Guardian
         $query = ParentGuardian::find();
         $query->leftJoin('person', 'parent_guardian.parent_guardian_id=person.person_id');
 
@@ -62,7 +63,7 @@ class ParentGuardianSearch extends ParentGuardian
             return $dataProvider;
         }
 
-        // grid filtering conditions
+        // grid filtering conditions, we need to filter the person details to so that we can sort and search them
         $query->andFilterWhere([
             'parent_guardian_id' => $this->parent_guardian_id,
         ])
@@ -73,6 +74,7 @@ class ParentGuardianSearch extends ParentGuardian
 
         $query->andFilterWhere(['ilike', 'relationship_to_student', $this->relationship_to_student]);
 
+        // This allows the user to sort the columns
         $dataProvider->setSort([
             'attributes' => [
                 'first_name' => [

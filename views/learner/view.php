@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Timetable', ['calendar/index', 'id' => $person->person_id], ['class' => 'btn btn-primary']) ?>
     </p>
 
-
+    <!--    Display the user friendly data, rather than id-->
     <?= DetailView::widget([
         'model' => [ $person, $learner ],
         'attributes' => [
